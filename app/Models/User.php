@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -55,5 +56,19 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Country::class);
     }
+    public function calendars(){
+        return $this->belongsToMany(Calendar::class);
+    }
+    public function departments(){
+        return $this->belongsToMany(Departament::class);
+    }
+
+    public function holidays(){
+        return $this->hasMany(Holliday::class);
+    }
+    public function timesheets(){
+        return $this->hasMany(Timesheet::class);
+    }
+
 
 }
